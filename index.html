@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="shortcut icon"
+			href="./jhep-coursera-course4.jfif"
+			type="image/x-icon"
+		/>
+		<title>HTML CSS JS Projects</title>
+		<script src="js.js"></script>
+		<style>
+			* {
+				margin: 0;
+			}
+			body {
+				background-color: midnightblue;
+			}
+			.container {
+				width: 100vw;
+				display: grid;
+				place-items: center;
+			}
+			.container div {
+				margin: .5em;
+				padding: .2em;
+				word-wrap: break-word;
+				border-radius: 10px;
+				background: burlywood;
+				color: midnightblue;
+				box-shadow: 0 30px 30px rgba(0, 0, 0, 0.05);
+			}
+			a {
+				height: fit-content;
+				text-size-adjust: 10%;
+				word-wrap: break-word;
+				text-decoration: none;
+				color: midnightblue;
+				overflow: hidden;
+			}
+			a:hover {
+				background: #62baea;
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container"></div>
+		<script>
+			const container = document.querySelector(".container");
+			let paths;
+			fetch("paths.json")
+				.then((res) => res.json())
+				.then((data) => {
+					paths = data.paths;
+					paths?.forEach((path) => {
+						// console.log(path);
+						const link = document.createElement("a");
+						const linkDiv = document.createElement("div");
+						link.setAttribute("href", path);
+						link.append(path);
+						console.log(link);
+						linkDiv.append(link);
+						container.append(linkDiv);
+					});
+				});
+		</script>
+	</body>
+</html>
